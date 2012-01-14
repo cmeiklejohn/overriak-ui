@@ -1,7 +1,5 @@
 var App = Em.Application.create();
 
-App.MyView = Em.View.extend({
-  mouseDown: function() {
-    window.alert("hello world!");
-  }
-});
+// Create the data store.
+//
+App.store = DS.Store.create();
