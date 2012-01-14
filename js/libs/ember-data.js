@@ -73,7 +73,9 @@ DS.fixtureAdapter = DS.Adapter.create({
 (function(exports) {
 var get = Ember.get, set = Ember.set, getPath = Ember.getPath;
 
-DS.RESTAdapter = DS.Adapter.extend({
+// Temporarily patch from .extend to .create.
+//
+DS.RESTAdapter = DS.Adapter.create({
   createRecord: function(store, type, model) {
     var root = this.rootForType(type);
 
