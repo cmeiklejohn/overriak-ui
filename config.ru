@@ -33,12 +33,23 @@ class Application < Rack::Directory
     [200, { 'Content-Type' => 'application/json' }, [JSON.generate(response)]]
   end
 
-  AVAILABLE = [:nodes, :clusters]
+  AVAILABLE = [:nodes, :clusters, :samples]
   AVAILABLE_FIXTURES = AVAILABLE.map(&:to_s).join('|')
 
+  def samples_fixture
+    [
+      { :id => 1, :cpu_avg5 => '10', :created_at => Time.now.to_i },
+      { :id => 2, :cpu_avg5 => '60', :created_at => Time.now.to_i },
+      { :id => 3, :cpu_avg5 => '10', :created_at => Time.now.to_i },
+      { :id => 4, :cpu_avg5 => '40', :created_at => Time.now.to_i }
+    ]
+  end
+
   def nodes_fixture
-    [{:id => 1, :ip_address => '127.0.0.1'},
-     {:id => 2, :ip_address => '127.0.0.2'}]
+    [
+      { :id => 1, :ip_address => '127.0.0.1', :samples => [1, 2] },
+      { :id => 2, :ip_address => '127.0.0.2', :samples => [3, 4] }
+    ]
   end
 
   def clusters_fixture
