@@ -4,6 +4,16 @@
 
 Coming soon; still in development.
 
+## Development
+
+Starting locally, the rackup file will provide a local webserver which
+will respond with fixtures for each JSON request.
+
+```ruby
+bundle
+thin -R config.ru start
+```
+
 ## Contributing
 
 1. Fork the official repository.
